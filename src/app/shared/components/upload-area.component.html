@@ -1,0 +1,48 @@
+<div class="border-2 border-dashed rounded-lg p-8 text-center transition-colors" [class.border-blue-400]="isDragging"
+    [class.bg-blue-50]="isDragging" [class.border-gray-300]="!isDragging" (dragover)="handleDragOver($event)"
+    (dragleave)="handleDragLeave($event)" (drop)="handleDrop($event)">
+    <div *ngIf="!selectedFile" class="space-y-4">
+        <div class="mx-auto w-16 h-16 flex items-center justify-center rounded-full bg-blue-100">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-600" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+            </svg>
+        </div>
+        <h3 class="text-lg font-medium">Carregar arquivo</h3>
+        <p class="text-muted-foreground max-w-md mx-auto">
+            Arraste e solte um arquivo CSV ou Excel aqui, ou clique para selecionar um arquivo do seu computador.
+        </p>
+        <div class="mt-4">
+            <input type="file" id="file-upload" class="hidden" accept=".csv,.xlsx,.xls"
+                (change)="handleFileInput($event)" />
+            <label for="file-upload"
+                class="inline-block px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 cursor-pointer">
+                Selecionar Arquivo
+            </label>
+        </div>
+        <p class="text-sm text-muted-foreground mt-2">
+            Formatos aceitos: CSV, Excel (.xlsx, .xls)
+        </p>
+    </div>
+
+    <div *ngIf="selectedFile" class="space-y-4">
+        <div class="flex items-center justify-center space-x-2">
+            <div class="w-10 h-10 flex items-center justify-center rounded-full bg-green-100">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-600" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+            </div>
+            <div class="text-left">
+                <h3 class="text-lg font-medium text-green-700">Arquivo carregado</h3>
+                <p class="text-sm text-muted-foreground">{{ selectedFile.name }}</p>
+            </div>
+        </div>
+        <div class="flex justify-center space-x-2 mt-4">
+            <button class="px-3 py-1 text-sm bg-blue-600 text-white rounded hover:bg-blue-700" (click)="resetFile()">
+                Selecionar outro arquivo
+            </button>
+        </div>
+    </div>
+</div>

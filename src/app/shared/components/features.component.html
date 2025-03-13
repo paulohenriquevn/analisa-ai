@@ -1,0 +1,30 @@
+<section class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl mx-auto text-center mb-16">
+            <h2 class="text-3xl font-bold text-gray-900 mb-4">Recursos poderosos para análise de dados</h2>
+            <p class="text-xl text-gray-600">
+                Ferramentas sofisticadas com uma interface fácil de usar para transformar dados em decisões de negócios.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div *ngFor="let feature of features"
+                class="bg-white rounded-lg shadow-sm p-6 transition-all duration-200 hover:shadow-md">
+                <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-600" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" [attr.d]="feature.icon" />
+                    </svg>
+                </div>
+                <h3 class="text-xl font-semibold text-gray-900 mb-2">{{ feature.title }}</h3>
+                <p class="text-gray-600">{{ feature.description }}</p>
+            </div>
+        </div>
+
+        <div class="mt-16 text-center">
+            <app-button size="lg" variant="outline" class="border-blue-500 text-blue-600 hover:bg-blue-50">
+                Ver todos os recursos
+            </app-button>
+        </div>
+    </div>
+</section>
